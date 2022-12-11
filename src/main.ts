@@ -16,7 +16,7 @@ async function bootstrap() {
     SwaggerModule.setup('swagger', app, document);
   }
 
-  await app.listen(3000);
+  await app.listen(8080);
 
   if ((module as any).hot) {
     (module as any).hot.accept();
