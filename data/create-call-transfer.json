@@ -1,0 +1,11 @@
+{
+  "email": "test1@test.com",
+  "password": "123456",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      114.5110151,
+      -8.4556973
+    ]
+  }
+}
