@@ -13,5 +13,5 @@ export class UserService implements IUserService {
   async save(user: User): Promise<User> {
     user.userUuid = randomUUID();
     return await this.userRepository.save(user);
-  }
-}
+  };
+};

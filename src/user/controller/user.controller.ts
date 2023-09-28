@@ -6,11 +6,14 @@ import {
   Inject,
   NotFoundException,
   Post,
+  Get,
   Res,
+  ImATeapotException,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { User } from '../schema/user.document';
 import { IUserService } from '../service/user.service.interface';
+import { error } from 'console';
 
 @ApiTags('users')
 @Controller('users')
@@ -25,7 +28,7 @@ export class UserController {
       return response.status(HttpStatus.CREATED).json(newUser);
     } catch (e: any) {
       if (e instanceof NotFoundException) {
-        return response.status(HttpStatus.NOT_FOUND).json();
+        return response.status(HttpStatus.NOT_FOUND).json({error: 'Email já cadastrado.'});
       }
       if (e instanceof BadRequestException) {
         return response.status(HttpStatus.BAD_REQUEST).json();
@@ -33,4 +36,8 @@ export class UserController {
       return response.status(HttpStatus.INTERNAL_SERVER_ERROR).json();
     }
   }
-}
+  
+  }
+  
+  
+
