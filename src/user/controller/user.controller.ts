@@ -31,11 +31,8 @@ export class UserController {
       
       return response.status(HttpStatus.CREATED).json(newUser);
     } catch (e: any) {
-      if (e instanceof NotFoundException) {
-        return response.status(HttpStatus.NOT_FOUND).json({error: 'Email já cadastrado.'});
-      }
       if (e instanceof BadRequestException) {
-        return response.status(HttpStatus.BAD_REQUEST).json();
+        return response.status(HttpStatus.BAD_REQUEST).json({error: 'Email já cadastrado.'});
       }
       return response.status(HttpStatus.INTERNAL_SERVER_ERROR).json();
     }

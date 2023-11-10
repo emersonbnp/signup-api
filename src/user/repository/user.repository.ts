@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException, Logger } from '@nestjs/common';
+import { Injectable, NotFoundException, Logger, BadRequestException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User, UserDocument } from '../schema/user.document';
@@ -15,7 +15,7 @@ export class UserRepository implements IUserRepository {
     const userFound = await this.findUserByEmail(user.email);
   
     if (userFound && userFound.email === user.email) {
-      throw new NotFoundException('Email já cadastrado.');
+      throw new BadRequestException('Email já cadastrado.');
     }
   
     const newUser = new this.userModel(user);
