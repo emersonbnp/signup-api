@@ -1,4 +1,4 @@
-import { Inject, Injectable, Logger } from '@nestjs/common';
+import { HttpCode, HttpException, HttpStatus, Inject, Injectable, Logger } from '@nestjs/common';
 import { randomUUID } from 'crypto';
 import { IUserRepository } from '../repository/user.repository.interface';
 import { User } from '../schema/user.document';
@@ -6,7 +6,6 @@ import { IUserService } from './user.service.interface';
 
 @Injectable()
 export class UserService implements IUserService {
-  private readonly logger = new Logger(UserService.name);
   constructor(
     @Inject(IUserRepository) private readonly userRepository: IUserRepository,
   ) {}
@@ -21,8 +20,6 @@ export class UserService implements IUserService {
   };
 
   async findUserById(userUuid: string): Promise<User> {
-    this.logger.log('findUserById Service uuId------------------>', userUuid)
     return await this.userRepository.findUserById(userUuid);
   };
-
 };
