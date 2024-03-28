@@ -6,6 +6,7 @@ import { IUserRepository } from './repository/user.repository.interface';
 import { User, UserSchema } from './schema/user.document';
 import { UserService } from './service/user.service';
 import { IUserService } from './service/user.service.interface';
+import { JwtService } from '@nestjs/jwt';
 
 @Module({
   imports: [
@@ -13,6 +14,8 @@ import { IUserService } from './service/user.service.interface';
   ],
   controllers: [UserController],
   providers: [
+    JwtService,
+    UserService,
     {
       provide: IUserRepository,
       useClass: UserRepository,
