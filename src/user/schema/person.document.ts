@@ -4,9 +4,9 @@ import { Address } from '../schema/address.document'
 @Schema({ autoIndex: true })
 export class Person {
   @Prop({ required: true })
-  readonly name: string;
+   name: string;
   @Prop({ required: true })
-  readonly birthDate: string
+   birthDate: string
   @Prop({ required: true })
-  readonly address: Address
+   address: Address
 }

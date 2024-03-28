@@ -3,11 +3,11 @@ import { Prop, Schema } from '@nestjs/mongoose';
 @Schema({ autoIndex: true })
 export class Address {
   @Prop({ required: true })
-  readonly street: string
+  street: string
   @Prop({ required: true })
-  readonly city: string
+  city: string
   @Prop({ required: true })
-  readonly state: string
+  state: string
   @Prop({ required: true })
-  readonly zipCode: string
+  zipCode: string
 }

@@ -13,6 +13,7 @@ export class User {
     this.location = location;
     this.type = type;
   }
+  readonly _id: Types.ObjectId;
   @Prop({ unique: true })
   userUuid: string;
   @Prop({ required: true})
@@ -20,7 +21,7 @@ export class User {
   @Prop({ required: true, unique: true })
   readonly email: string;
   @Prop({ required: true })
-  readonly password: string;
+  password: string;
   @Prop({ default: 'user' })
   readonly type: string;
   @Prop({ required: true, type: Location })

@@ -6,6 +6,7 @@ import {
   HttpStatus,
   Inject,
   Post,
+  Put,
   Get,
   Res,
   UseGuards,
@@ -34,6 +35,20 @@ export class UserController {
     } catch (e: any) {
       if (e instanceof BadRequestException) {
         return response.status(HttpStatus.BAD_REQUEST).json({ error: 'Email já cadastrado.' });
+      }
+      return response.status(HttpStatus.INTERNAL_SERVER_ERROR).json();
+    }
+  }
+
+  @Put()
+  async update(@Res() response: any, @Body() user: User): Promise<User> {
+    try {
+      const updatedUser = await this.userService.update(user);
+
+      return response.status(HttpStatus.OK).json(updatedUser);
+    } catch (e: any) {
+      if (e instanceof BadRequestException) {
+        return response.status(HttpStatus.BAD_REQUEST).json({ error: error });
       }
       return response.status(HttpStatus.INTERNAL_SERVER_ERROR).json();
     }
